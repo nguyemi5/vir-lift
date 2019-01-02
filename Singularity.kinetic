@@ -90,6 +90,13 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
         ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
 
+        #pygpu installation requirements
+        apt-get install check
+        python -m pip install Cython
+        python -m pip install Mako
+        python -m pip install nose
+        
+        #install pygpu
         git clone https://github.com/Theano/libgpuarray.git
         cd libgpuarray
         mkdir Build
