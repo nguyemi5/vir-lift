@@ -39,3 +39,9 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     apt-get update
     apt-get install -y ros-kinetic-desktop-full
     apt-get install -y python-pip
+    apt-get install -y python-flufl.lock
+    python -m pip install h5py
+    python -m pip install scipy
+    python -m pip install parse
+    pip install git+https://github.com/Theano/Theano.git#egg=Theano
+    pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
