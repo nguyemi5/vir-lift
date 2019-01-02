@@ -50,6 +50,7 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     apt-get install -y ros-kinetic-desktop-full
     apt-get install -y python-pip
     apt-get install -y python-flufl.lock
+    apt-get install -y python-opencv
     python -m pip install h5py
     python -m pip install scipy
     python -m pip install parse
