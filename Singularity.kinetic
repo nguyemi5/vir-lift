@@ -58,6 +58,7 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     python -m pip install parse
     pip install git+https://github.com/Theano/Theano.git#egg=Theano
     pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
+    conda install pygpu    
     
         # use bash as default shell
         echo "\n #Using bash as default shell \n" >> /environment
