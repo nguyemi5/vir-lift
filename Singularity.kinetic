@@ -44,6 +44,10 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
 
 %post
 
+    sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+    apt-get update
+
         #pygpu installation requirements
         apt-get install -y check
         python -m pip install Cython
@@ -65,9 +69,6 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         python setup.py install
         python setup.py build_ext -L $MY_PREFIX/lib -I $MY_PREFIX/include
 
-    sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-    apt-get update
     apt-get install -y ros-kinetic-desktop-full
     apt-get install -y libalglib-dev
     apt-get install -y gnuplot
