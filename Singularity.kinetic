@@ -48,6 +48,8 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
     apt-get update
     apt-get install -y ros-kinetic-desktop-full
+    apt-get install -y libalglib-dev
+    apt-get install -y gnuplot
     apt-get install -y python-pip
     apt-get install -y python-flufl.lock
     apt-get install -y python-opencv
