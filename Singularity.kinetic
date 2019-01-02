@@ -91,6 +91,7 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
 
         git clone https://github.com/Theano/libgpuarray.git
+        cd libgpuarray
         mkdir Build
         cd Build
         # you can pass -DCMAKE_INSTALL_PREFIX=/path/to/somewhere to install to an alternate location
