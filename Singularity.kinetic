@@ -48,6 +48,18 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
     apt-get update
 
+    apt-get install -y ros-kinetic-desktop-full
+    apt-get install -y libalglib-dev
+    apt-get install -y gnuplot
+    apt-get install -y python-pip
+    apt-get install -y python-flufl.lock
+    apt-get install -y python-opencv
+    python -m pip install h5py
+    python -m pip install scipy
+    python -m pip install parse
+    pip install git+https://github.com/Theano/Theano.git#egg=Theano
+    pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
+    
         #pygpu installation requirements
         apt-get install -y check
         python -m pip install Cython
@@ -67,20 +79,8 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         # This must be done after libgpuarray is installed as per instructions above.
         python setup.py build
         python setup.py install
-        python setup.py build_ext -L $MY_PREFIX/lib -I $MY_PREFIX/include
-
-    apt-get install -y ros-kinetic-desktop-full
-    apt-get install -y libalglib-dev
-    apt-get install -y gnuplot
-    apt-get install -y python-pip
-    apt-get install -y python-flufl.lock
-    apt-get install -y python-opencv
-    python -m pip install h5py
-    python -m pip install scipy
-    python -m pip install parse
-    pip install git+https://github.com/Theano/Theano.git#egg=Theano
-    pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
-    
+        python setup.py build_ext -L $MY_PREFIX/lib -I $MY_PREFIX/includ
+        
         # use bash as default shell
         echo "\n #Using bash as default shell \n" >> /environment
         echo 'SHELL=/bin/bash' >> /environment
