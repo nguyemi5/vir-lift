@@ -42,7 +42,7 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
     pip install git+https://github.com/Theano/Theano.git#egg=Theano
     pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 
-From: nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
+From: nvidia/cuda:9.2-cudnn7-devel-ubuntu16.04
 
 %environment
 
