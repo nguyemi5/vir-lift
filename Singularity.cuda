@@ -72,7 +72,8 @@ From: nvidia/cuda:9.2-cudnn7-devel-ubuntu16.04
   apt-get update
   apt-get install -y ros-kinetic-desktop-full
   
-  apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
+  apt-get update
+  apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential
 
 
   # load environment variables
