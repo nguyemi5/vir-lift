@@ -37,12 +37,6 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
         CUDA_HOME="/usr/local/cuda"
 
-        # download and install Anaconda
-        CONDA_INSTALL_PATH="/usr/local/anaconda3"
-        wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-        chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
-        ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
-
         # add Anaconda path
         PATH="/usr/local/anaconda3/bin:$PATH"
 
@@ -90,5 +84,11 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         # creates a build directory
         mkdir build
         cd build
-       
+        
+        # download and install Anaconda
+        CONDA_INSTALL_PATH="/usr/local/anaconda3"
+        wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
+        chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
+        ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
+        
         conda install -y -c mila-udem -c mila-udem/label/pre theano pygpu
