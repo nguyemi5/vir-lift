@@ -37,6 +37,12 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
         CUDA_HOME="/usr/local/cuda"
 
+        # download and install Anaconda
+        CONDA_INSTALL_PATH="/usr/local/anaconda3"
+        wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
+        chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
+        ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
+
         # add Anaconda path
         PATH="/usr/local/anaconda3/bin:$PATH"
 
@@ -84,31 +90,5 @@ AUTHOR Yasasvy Nanyam ynanyam@iastate.edu
         # creates a build directory
         mkdir build
         cd build
-
-        # download and install Anaconda
-        CONDA_INSTALL_PATH="/usr/local/anaconda3"
-        wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh
-        chmod +x Anaconda3-5.0.1-Linux-x86_64.sh
-        ./Anaconda3-5.0.1-Linux-x86_64.sh -b -p $CONDA_INSTALL_PATH
-        
-        #pygpu installation requirements
-        apt-get install -y check
-        python -m pip install Cython
-        python -m pip install Mako
-        python -m pip install nose
-        
-        #install pygpu
-        git clone https://github.com/Theano/libgpuarray.git
-        cd libgpuarray
-        mkdir Build
-        cd Build
-        # you can pass -DCMAKE_INSTALL_PREFIX=/path/to/somewhere to install to an alternate location
-        cmake .. -DCMAKE_BUILD_TYPE=Release # or Debug if you are investigating a crash
-        make
-        make install
-        cd ..
-        # This must be done after libgpuarray is installed as per instructions above.
-        python setup.py build
-        python setup.py install
-        python setup.py build_ext -L $MY_PREFIX/lib -I $MY_PREFIX/includ
-        
+       
+        conda install -y -c mila-udem -c mila-udem/label/pre theano pygpu
