@@ -1,5 +1,4 @@
-ARG repository
-FROM ${repository}:9.2-runtime-ubuntu16.04
+FROM nvidia/cuda:9.2-runtime-ubuntu16.04
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
