@@ -61,7 +61,7 @@ RUN apt-get update && apt-get install -y \
     gnuplot \
     python-pip \
     python-flufl.lock \
-    python-opencv \
+    python-opencv
     
 RUN python -m pip install h5py
 RUN python -m pip install scipy
