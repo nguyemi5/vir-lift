@@ -108,6 +108,11 @@ RUN pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 # RUN python setup.py build
 # RUN python setup.py install
 
+RUN apt-get -y install check
+RUN python -m pip install Cython
+RUN python -m pip install Mako
+RUN python -m pip install nose
+
 RUN git clone https://github.com/Theano/libgpuarray.git ~/libgpuarray
 
 RUN mkdir ~/libgpuarray/Build && cd ~/libgpuarray/Build && cmake .. -DCMAKE_BUILD_TYPE=Release && make && make install
