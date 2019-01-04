@@ -90,5 +90,20 @@ dpkg -i tini.deb && \
 rm tini.deb && \
 apt-get clean
 
-RUN conda install -y pygpu
+# RUN conda install -y pygpu
+RUN git clone https://github.com/Theano/libgpuarray.git
+RUN cd libgpuarray
+
+RUN mkdir Build
+RUN cd Build
+# you can pass -DCMAKE_INSTALL_PREFIX=/path/to/somewhere to install to an alternate location
+RUN cmake .. -DCMAKE_BUILD_TYPE=Release # or Debug if you are investigating a crash
+RUN make
+RUN make install
+RUN cd ..
+
+# This must be done after libgpuarray is installed as per instructions above.
+RUN python setup.py build
+RUN python setup.py install
+
 
