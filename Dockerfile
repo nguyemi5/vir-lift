@@ -90,7 +90,7 @@ dpkg -i tini.deb && \
 rm tini.deb && \
 apt-get clean
 
-RUN conda install -y -c mila-udem pygpu
+# RUN conda install -y -c mila-udem pygpu
 
 # RUN conda install -y pygpu
 # RUN git clone https://github.com/Theano/libgpuarray.git
@@ -108,4 +108,9 @@ RUN conda install -y -c mila-udem pygpu
 # RUN python setup.py build
 # RUN python setup.py install
 
+RUN git clone https://github.com/Theano/libgpuarray.git ~/libgpuarray
+
+RUN mkdir ~/libgpuarray/Build && cd ~/libgpuarray/Build && cmake .. -DCMAKE_BUILD_TYPE=Release && make && make install
+
+RUN cd ~/libgpuarray && python setup.py build && python setup.py install && ldconfig
 
