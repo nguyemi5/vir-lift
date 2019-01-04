@@ -105,7 +105,7 @@ RUN conda install -y -c mila-udem pygpu
 # RUN cd ..
 
 # This must be done after libgpuarray is installed as per instructions above.
-RUN python setup.py build
-RUN python setup.py install
+# RUN python setup.py build
+# RUN python setup.py install
 
 
