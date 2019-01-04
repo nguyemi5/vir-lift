@@ -69,28 +69,26 @@ RUN python -m pip install parse
 RUN pip install git+https://github.com/Theano/Theano.git#egg=Theano
 RUN pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 
-# configure environment
-ENV CONDA_DIR /opt/conda
-ENV PATH $CONDA_DIR/bin:$PATH
-ENV CONTAINER_USER lion
-ENV CONTAINER_UID 1000
-ENV INSTALLER Miniconda2-latest-Linux-x86_64.sh
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV PATH /opt/conda/bin:$PATH
 
-# create conda directory for lion user
-# RUN mkdir -p /opt/conda && \
-# chown lion /opt/conda
+RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
+libglib2.0-0 libxext6 libsm6 libxrender1 \
+git mercurial subversion
 
-# install conda with python 2.7
-RUN cd /tmp && \
-mkdir -p $CONDA_DIR && \
-wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh && \
-echo $(wget --quiet -O - https://repo.continuum.io/miniconda/ \
-| grep -A3 $INSTALLER \
-| tail -n1 \
-| cut -d\> -f2 \
-| cut -d\< -f1 ) $INSTALLER | md5sum -c - && \
-/bin/bash $INSTALLER -f -b -p $CONDA_DIR && \
-rm $INSTALLER
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-5.3.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+/bin/bash ~/anaconda.sh -b -p /opt/conda && \
+rm ~/anaconda.sh && \
+ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+echo "conda activate base" >> ~/.bashrc
+
+RUN apt-get install -y curl grep sed dpkg && \
+TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \
+curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \
+dpkg -i tini.deb && \
+rm tini.deb && \
+apt-get clean
 
 RUN conda install pygpu
 
