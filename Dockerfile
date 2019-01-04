@@ -90,5 +90,5 @@ dpkg -i tini.deb && \
 rm tini.deb && \
 apt-get clean
 
-RUN conda install pygpu
+RUN conda install -y pygpu
 
