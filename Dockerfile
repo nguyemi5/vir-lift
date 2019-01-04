@@ -77,8 +77,8 @@ ENV CONTAINER_UID 1000
 ENV INSTALLER Miniconda2-latest-Linux-x86_64.sh
 
 # create conda directory for lion user
-RUN mkdir -p /opt/conda && \
-chown lion /opt/conda
+# RUN mkdir -p /opt/conda && \
+# chown lion /opt/conda
 
 # install conda with python 2.7
 RUN cd /tmp && \
